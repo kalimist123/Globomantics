@@ -28,7 +28,15 @@ namespace Globomantics
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseMvc();
+            app.UseStaticFiles();
+            app.UseStatusCodePages();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Conference}/{action=Index}/{id?}");
+            });
+
         }
     }
 }
